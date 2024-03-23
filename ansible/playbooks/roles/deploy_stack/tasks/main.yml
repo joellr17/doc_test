@@ -1,0 +1,8 @@
+---
+- name: Build and run Docker stack
+  community.docker.docker_compose:
+    project_src: "{{ playbook_dir }}/src"
+    compose_file:
+      - "{{ playbook_dir }}/docker-compose.yml"
+    build: yes
+    state: present

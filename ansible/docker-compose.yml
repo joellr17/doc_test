@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  app:
+    build: ./src
+    container_name: dotnet-hello-world
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Port=5432;Database=mydb;User Id=myuser;Password=mypassword;
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:

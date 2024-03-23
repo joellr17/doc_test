@@ -1,0 +1,7 @@
+wordpress:
+  name: "wordpress-example"
+  image: "wordpress:latest"
+  host: "somehost"
+  db: "database"
+  user: "wp_user"
+  port: 8080

@@ -1,0 +1,6 @@
+- hosts: all
+  become: yes
+  roles:
+    - docker_install
+    - docker_compose_install
+    - deploy_stack

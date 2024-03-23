@@ -1,0 +1,15 @@
+- name: Set Docker Compose download URL for x86_64
+  set_fact:
+    docker_compose_url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64"
+  when: ansible_architecture == "x86_64"
+
+- name: Set Docker Compose download URL for aarch64 (ARM64)
+  set_fact:
+    docker_compose_url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-aarch64"
+  when: ansible_architecture == "aarch64"
+
+- name: Download Docker Compose
+  get_url:
+    url: "{{ docker_compose_url }}"
+    dest: "/usr/local/bin/docker-compose"
+    mode: 'u+x'
